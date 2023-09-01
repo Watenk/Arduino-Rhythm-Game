@@ -1,5 +1,5 @@
-#include "object.h"
+#include "Object.h"
 
-object::object(vector2Int pos, vector2int velocity, int width, int height) : pos(pos), velocity(velocity), width(width), height(height){
+Object::Object(Vector2Int pos, Vector2Int velocity, int width, int height, bool isCircle) : pos(pos), velocity(velocity), width(width), height(height), isCircle(isCircle){
 
 }

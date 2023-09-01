@@ -1,11 +1,12 @@
 #pragma once
 
-class vector2{
+class Vector2Int{
   public:
-    vector2Int(int x, int);
+    Vector2Int();
+    Vector2Int(int x, int y);
     int x;
     int y;
 
   private:
 
-}
+};

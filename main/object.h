@@ -1,14 +1,17 @@
 #pragma once
 
-#include "vector2Int.h"
+#include "Vector2Int.h"
 
-class object{
+class Object{
   public:
-  vector2Int pos;
-  vector2Int velocity;
+  Object(Vector2Int pos, Vector2Int velocity, int width, int height, bool isCircle);
+
+  Vector2Int pos;
+  Vector2Int velocity;
   int width;
   int height;
+  bool isCircle;
 
   private:
 
-}
+};
