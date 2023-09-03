@@ -4,6 +4,7 @@ GameManager* gameManager;
 unsigned long time;
 unsigned long timeSinceLastUpdate;
 unsigned long lastUpdateTime;
+int fps;
 
 void setup() {
 
@@ -20,11 +21,12 @@ void loop() {
 }
 
 void UpdateGameManager(){
-  //Update the GameManager 10 times a second
+  //Update the GameManager 24 times a second
   time = millis();
   timeSinceLastUpdate = time - lastUpdateTime;
-  if (timeSinceLastUpdate > 1000){
-    gameManager->update();
+  if (timeSinceLastUpdate > 42){
+    gameManager->update(fps);
+    fps = 1000 / timeSinceLastUpdate;
     timeSinceLastUpdate = 0;
     lastUpdateTime = time;
   }

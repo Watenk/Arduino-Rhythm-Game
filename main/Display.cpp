@@ -1,8 +1,14 @@
+#include <Adafruit_BusIO_Register.h>
+#include <Adafruit_I2CDevice.h>
+#include <Adafruit_I2CRegister.h>
+#include <Adafruit_SPIDevice.h>
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
 #include "Display.h"
+#include "Vector2Int.h"
 
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -19,7 +25,7 @@ void Display::initialize(){
   if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
     while (true);
-  }
+  }                                                             
 
   updateDisplay();
 }
@@ -31,6 +37,13 @@ void Display::draw(Object* object){
   else{
     oled.fillCircle(object->pos.x, object->pos.y, (object->width + object->height) / 2, WHITE);
   }
+}
+
+void Display::drawNumber(int number, Vector2Int pos){
+  oled.setTextSize(1);         
+  oled.setTextColor(WHITE);
+  oled.setCursor(pos.x, pos.y);
+  oled.println(number);
 }
 
 void Display::clearDisplay(){

@@ -1,5 +1,5 @@
 #pragma once
-
+                            
 #include "Object.h"
 
 class Display{
@@ -7,9 +7,10 @@ class Display{
     display();
     void initialize();
     void draw(Object* object);
+    void drawNumber(int number, Vector2Int pos);
     void updateDisplay();
     void clearDisplay();
 
   private:
 
-};
+};                                                                                                                                                                                        

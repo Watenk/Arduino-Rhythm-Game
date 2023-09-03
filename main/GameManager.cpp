@@ -1,66 +1,55 @@
 #include <Arduino.h>
 
 #include "GameManager.h"
-#include "Display.h"
 #include "Vector2Int.h"
-int currentObjectIndex;
-int objectAmount = 10;
-
-Display* display;
 
 GameManager::GameManager(){
   display = new Display();
-  display->initialize();
-  currentObjectIndex = 0;
+  objectList = new List();
 
-  for (int i = 0; i < objectAmount; i++){
-    objects[i] = new Object(Vector2Int(-100, -100), Vector2Int(0, 0), 0, 0, false);
-  }
+  display->initialize();
 }
 
-void GameManager::update(){
+void GameManager::update(int fpsMain){
+  fps = fpsMain;
+
   updateObjects();
   drawObjects();
 }
 
-void GameManager::updateObjects(){
-  for (int i = 0; i < objectAmount; i++){
-    Object* currentObject = objects[i];
-    if (currentObject->pos.y < 10) { currentObject->velocity.y * -1; }
-    if (currentObject->pos.y > 50) { currentObject->velocity.y * -1; }
+void GameManager::startLvl01(){
+  objectList->add(new Object(Vector2Int(0, 50), Vector2Int(0,0), 128, 2, false)); //Detection bar
 
-    currentObject->pos.x += currentObject->velocity.x;
-    currentObject->pos.y += currentObject->velocity.y;
+  Object* circle = new Object(Vector2Int(10, 30), Vector2Int(1,0), 5, 5, true);
+  objectList->add(circle);
+  //objectList->remove(circle);
+}
+
+void GameManager::updateObjects(){
+
+  ListNode* currentObject = objectList->getHead();
+  while (currentObject != NULL){
+    currentObject->object->pos.x += currentObject->object->velocity.x;
+    currentObject->object->pos.y += currentObject->object->velocity.y;
+    currentObject = currentObject->previousNode;
   }
 }
 
 void GameManager::drawObjects(){
   display->clearDisplay();
   
-  for (int i = 0; i < objectAmount; i++){
-    display->draw(objects[i]);
+  ListNode* currentObject = objectList->getHead();
+  while (currentObject != NULL){
+    display->draw(currentObject->object);
+    currentObject = currentObject->previousNode;
   }
+
+  drawFpsCounter();
+
   display->updateDisplay();
 }
 
-void GameManager::startLvl01(){
-  addObject(Vector2Int(0, 0), Vector2Int(0,0), 5, 5, false);
-
+void GameManager::drawFpsCounter(){
+  display->drawNumber(fps, Vector2Int(0, 0));
 }
 
-void GameManager::addNote(){
-  
-}
-
-void GameManager::addObject(Vector2Int pos, Vector2Int velocity, int width, int height, bool isCircle){
-  objects[currentObjectIndex]->pos = pos;
-  objects[currentObjectIndex]->velocity = velocity;
-  objects[currentObjectIndex]->width = width;
-  objects[currentObjectIndex]->height = height;
-  objects[currentObjectIndex]->isCircle = isCircle;
-  currentObjectIndex++;
-}
-
-void GameManager::removeObject(){
-
-}

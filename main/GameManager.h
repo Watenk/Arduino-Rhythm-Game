@@ -1,20 +1,22 @@
 #pragma once
 
 #include "Object.h"
+#include "List.h"
+#include "Display.h"
 
 class GameManager{
   public:
     GameManager();
-    void update();
+    void update(int fps);
     void startLvl01();
-    void addObject(Vector2Int pos, Vector2Int velocity, int width, int height, bool isCircle);
-    void removeObject();
     void drawObjects();
     void updateObjects();
-    void addNote();
+    void drawFpsCounter();
 
   private:
-    Object* objects[10];
+    List* objectList;
+    Display* display;
     int updateDelay;
     int currentObjectIndex;
+    int fps;
 };
