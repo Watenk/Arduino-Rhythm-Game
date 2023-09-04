@@ -1,5 +1,7 @@
 #include "gameManager.h"
 
+#include "MemoryFree.h"
+
 GameManager* gameManager;
 unsigned long time;
 unsigned long timeSinceLastUpdate;
@@ -16,7 +18,7 @@ void setup() {
 }
 
 void loop() {
-
+  Serial.println(freeMemory());
   UpdateGameManager();
 }
 

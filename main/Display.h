@@ -8,6 +8,7 @@ class Display{
     void initialize();
     void draw(Object* object);
     void drawNumber(int number, Vector2Int pos);
+    void drawUI();
     void updateDisplay();
     void clearDisplay();
 

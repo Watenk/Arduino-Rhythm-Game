@@ -18,11 +18,14 @@ void GameManager::update(int fpsMain){
 }
 
 void GameManager::startLvl01(){
-  objectList->add(new Object(Vector2Int(0, 50), Vector2Int(0,0), 128, 2, false)); //Detection bar
 
-  Object* circle = new Object(Vector2Int(10, 30), Vector2Int(1,0), 5, 5, true);
-  objectList->add(circle);
-  //objectList->remove(circle);
+  //Test Notes
+  objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(31, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(52, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(73, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(94, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(115, 10), Vector2Int(0, 2), 5, 5, true));
 }
 
 void GameManager::updateObjects(){
@@ -31,6 +34,12 @@ void GameManager::updateObjects(){
   while (currentObject != NULL){
     currentObject->object->pos.x += currentObject->object->velocity.x;
     currentObject->object->pos.y += currentObject->object->velocity.y;
+    
+    if (currentObject->object->pos.y > 50){
+      objectList->add(new Object(Vector2Int(currentObject->object->pos.x, -20), Vector2Int(0, 2), 5, 5, true));
+      objectList->remove(currentObject);
+    }
+
     currentObject = currentObject->previousNode;
   }
 }
@@ -45,6 +54,7 @@ void GameManager::drawObjects(){
   }
 
   drawFpsCounter();
+  display->drawUI();
 
   display->updateDisplay();
 }
@@ -52,4 +62,3 @@ void GameManager::drawObjects(){
 void GameManager::drawFpsCounter(){
   display->drawNumber(fps, Vector2Int(0, 0));
 }
-

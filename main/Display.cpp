@@ -46,6 +46,15 @@ void Display::drawNumber(int number, Vector2Int pos){
   oled.println(number);
 }
 
+void Display::drawUI(){
+  oled.fillRect(0, 50, 128, 2, WHITE); //Detection Bar
+  oled.fillRect(21, 0, 1, 64, WHITE); //Bar 1
+  oled.fillRect(42, 0, 1, 64, WHITE); //Bar 2
+  oled.fillRect(63, 0, 1, 64, WHITE); //Bar 3
+  oled.fillRect(84, 0, 1, 64, WHITE); //Bar 4
+  oled.fillRect(105, 0, 1, 64, WHITE); //Bar 5
+}
+
 void Display::clearDisplay(){
   oled.clearDisplay();
 }

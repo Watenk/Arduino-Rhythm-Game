@@ -10,6 +10,7 @@ class List{
     List();
     void add(Object* object);
     void remove(Object* object);
+    void remove(ListNode* listNode);
     ListNode* getHead();
     int lenght();
 

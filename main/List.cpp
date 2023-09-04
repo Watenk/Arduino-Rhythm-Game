@@ -45,7 +45,39 @@ void List::remove(Object* object){
     nextNode->previousNode = previousNode;
   }
 
-  delete &object;
+  free(&object);
+  free(currentNode);
+}
+
+void List::remove(ListNode* listNode){
+  ListNode* currentNode = listNode;
+  ListNode* previousNode = currentNode->previousNode;
+  ListNode* nextNode = currentNode->nextNode;
+
+  //is last remaining item in the list
+  if (nextNode == NULL && previousNode == NULL){
+    head = NULL;
+  }
+
+  //is last item in list
+  else if (nextNode == NULL){
+    previousNode->nextNode = NULL;
+    head = previousNode;
+  }
+
+  //is first item in list
+  else if (previousNode == NULL){
+    nextNode->previousNode = NULL;
+  }
+
+  //is in middle of list
+  else if (nextNode != NULL && previousNode != NULL){
+    previousNode->nextNode = nextNode;
+    nextNode->previousNode = previousNode;
+  }
+
+  free(listNode->object);
+  free(listNode);
 }
 
 ListNode* List::get(Object* object){
