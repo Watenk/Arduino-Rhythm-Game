@@ -35,8 +35,7 @@ void GameManager::updateObjects(){
     currentObject->object->pos.x += currentObject->object->velocity.x;
     currentObject->object->pos.y += currentObject->object->velocity.y;
     
-    if (currentObject->object->pos.y > 50){
-      objectList->add(new Object(Vector2Int(currentObject->object->pos.x, -20), Vector2Int(0, 2), 5, 5, true));
+    if (currentObject->object->pos.y > 64){
       objectList->remove(currentObject);
     }
 
