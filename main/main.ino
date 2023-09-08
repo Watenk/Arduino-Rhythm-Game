@@ -1,35 +1,38 @@
-#include "gameManager.h"
-
+#include "GameManager.h"
 #include "MemoryFree.h"
+#include "Time.h"
+#include "Settings.h"
 
 GameManager* gameManager;
-unsigned long time;
-unsigned long timeSinceLastUpdate;
-unsigned long lastUpdateTime;
-int fps;
+Time* time;
 
 void setup() {
 
-  //Initialize
   Serial.begin(9600);
-  gameManager = new GameManager();
+  pinMode(speaker1Pin, OUTPUT);
+  pinMode(speaker2Pin, OUTPUT);
+  pinMode(speaker3Pin, OUTPUT);
+  pinMode(speaker4Pin, OUTPUT);
 
-  gameManager->startLvl01();
+  gameManager = new GameManager();
+  time = new Time();
+
+  gameManager->startColdAsIce();
 }
 
 void loop() {
-  Serial.println(freeMemory());
-  UpdateGameManager();
+
+  time->update();
+  gameManager->updateSound();
+
+  if (time->tryFixedUpdate()){
+    fixedUpdate();
+  }
+
 }
 
-void UpdateGameManager(){
-  //Update the GameManager 24 times a second
-  time = millis();
-  timeSinceLastUpdate = time - lastUpdateTime;
-  if (timeSinceLastUpdate > 42){
-    gameManager->update(fps);
-    fps = 1000 / timeSinceLastUpdate;
-    timeSinceLastUpdate = 0;
-    lastUpdateTime = time;
-  }
+void fixedUpdate(){
+  //gameManager->fixedUpdate();
+
+  //Serial.println(freeMemory());
 }

@@ -3,20 +3,26 @@
 #include "Object.h"
 #include "List.h"
 #include "Display.h"
+#include "Songs.h"
+#include "SpeakerManager.h"
 
 class GameManager{
   public:
     GameManager();
-    void update(int fps);
-    void startLvl01();
+    void updateSound();
+    void fixedUpdate();
     void drawObjects();
     void updateObjects();
-    void drawFpsCounter();
+
+    //Songs
+    void startColdAsIce();
 
   private:
     List* objectList;
     Display* display;
+    SpeakerManager* speakerManager;
+    Songs songs;
+
     int updateDelay;
     int currentObjectIndex;
-    int fps;
 };

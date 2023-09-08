@@ -2,30 +2,34 @@
 
 #include "GameManager.h"
 #include "Vector2Int.h"
+#include "Songs.h"
+#include "Notes.h"
 
 GameManager::GameManager(){
   display = new Display();
   objectList = new List();
+  speakerManager = new SpeakerManager();
+  Songs songs;
 
   display->initialize();
 }
 
-void GameManager::update(int fpsMain){
-  fps = fpsMain;
+void GameManager::updateSound(){
+  speakerManager->update();
+}
+
+void GameManager::fixedUpdate(){
 
   updateObjects();
   drawObjects();
 }
 
-void GameManager::startLvl01(){
+void GameManager::startColdAsIce(){
+
+  speakerManager->play(A5, 1000000);
 
   //Test Notes
-  objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
-  objectList->add(new Object(Vector2Int(31, 10), Vector2Int(0, 2), 5, 5, true));
-  objectList->add(new Object(Vector2Int(52, 10), Vector2Int(0, 2), 5, 5, true));
-  objectList->add(new Object(Vector2Int(73, 10), Vector2Int(0, 2), 5, 5, true));
-  objectList->add(new Object(Vector2Int(94, 10), Vector2Int(0, 2), 5, 5, true));
-  objectList->add(new Object(Vector2Int(115, 10), Vector2Int(0, 2), 5, 5, true));
+  //objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
 }
 
 void GameManager::updateObjects(){
@@ -52,12 +56,7 @@ void GameManager::drawObjects(){
     currentObject = currentObject->previousNode;
   }
 
-  drawFpsCounter();
   display->drawUI();
 
   display->updateDisplay();
-}
-
-void GameManager::drawFpsCounter(){
-  display->drawNumber(fps, Vector2Int(0, 0));
 }
