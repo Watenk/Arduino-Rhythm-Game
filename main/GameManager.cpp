@@ -26,10 +26,13 @@ void GameManager::fixedUpdate(){
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(A5, 1000000);
+  speakerManager->play(A5, 5000);
+  speakerManager->play(C5, 6000);
+  speakerManager->play(E5, 7000);
+  speakerManager->play(G5, 8000);
 
   //Test Notes
-  //objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
+  objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
 }
 
 void GameManager::updateObjects(){
@@ -58,5 +61,5 @@ void GameManager::drawObjects(){
 
   display->drawUI();
 
-  display->updateDisplay();
+  display->updateDisplay(speakerManager);
 }

@@ -11,14 +11,6 @@ void SpeakerManager::update(){
 
   for (int i = 0; i < speakerArraySize; i++){
     if (speakers[i].isBusy){
-      Serial.print("RemainingPlayTime: ");
-      Serial.println(speakers[i].remainingPlayTime);
-      Serial.print("TimeSinceStart: ");
-      Serial.println(timeSinceStart);
-      Serial.print("previousUpdate: ");
-      Serial.println(speakers[i].previousUpdate);
-      Serial.println(" ");
-
       if (speakers[i].remainingPlayTime > 0){
         if (timeSinceStart - speakers[i].previousUpdate >= speakers[i].speakerHalfPeriod){
           if (speakers[i].previousUpdate != 0){
@@ -38,12 +30,17 @@ void SpeakerManager::update(){
       }
       else{
         speakers[i].isBusy = false;
+        speakers[i].pinPower = 0;
+        speakers[i].previousUpdate = 0;
+        speakers[i].remainingPlayTime = 0;
+        speakers[i].speakerFreq = 0;
+        speakers[i].speakerHalfPeriod = 0;
       }
     }
   }
 }
 
-void SpeakerManager::play(int note, int lenght){
+void SpeakerManager::play(int note, long lenght){
 
   if (!speakers[0].isBusy){
     playNote(0, note, lenght);
@@ -57,11 +54,14 @@ void SpeakerManager::play(int note, int lenght){
   else if (!speakers[3].isBusy){
     playNote(3, note, lenght);
   }
+  else{
+    Serial.println("Dropped Tone Because all speakers are busy");
+  }
 }
 
-void SpeakerManager::playNote(int speakerIndex, int note, int lenght){
+void SpeakerManager::playNote(int speakerIndex, int note, long lenght){
   speakers[speakerIndex].isBusy = true;
   speakers[speakerIndex].speakerFreq = note;
-  speakers[speakerIndex].remainingPlayTime = lenght;
+  speakers[speakerIndex].remainingPlayTime = lenght * 1000;
   speakers[speakerIndex].speakerHalfPeriod = (1000000 / note) / 2;
 }

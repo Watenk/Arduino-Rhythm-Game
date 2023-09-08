@@ -7,10 +7,10 @@ class SpeakerManager{
   public:
     SpeakerManager();
     void update();
-    void play(int freq, int lenght);
+    void play(int freq, long lenght);
 
   private:
-    void playNote(int speakerIndex, int freq, int lenght);
+    void playNote(int speakerIndex, int freq, long lenght);
 
     int speakerArraySize = 4;
     Speaker speakers[4] = {

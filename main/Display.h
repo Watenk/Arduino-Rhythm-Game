@@ -1,6 +1,7 @@
 #pragma once
                             
 #include "Object.h"
+class SpeakerManager;
 
 class Display{
   public:
@@ -9,7 +10,7 @@ class Display{
     void draw(Object* object);
     void drawNumber(int number, Vector2Int pos);
     void drawUI();
-    void updateDisplay();
+    void updateDisplay(SpeakerManager* speakerManager);
     void clearDisplay();
 
   private:

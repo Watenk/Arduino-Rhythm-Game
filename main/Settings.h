@@ -1,4 +1,4 @@
-#define fpsTarget 20
+#define fpsTarget 10
 #define speaker1Pin 2
 #define speaker2Pin 3
 #define speaker3Pin 4

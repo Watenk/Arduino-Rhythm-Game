@@ -989,14 +989,21 @@ uint8_t *Adafruit_SSD1306::getBuffer(void) { return buffer; }
             called. Call after each graphics command, or after a whole set
             of graphics commands, as best needed by one's own application.
 */
-void Adafruit_SSD1306::display(void) {
+
+void Adafruit_SSD1306::display(SpeakerManager* speakerManager) {
   TRANSACTION_START
   static const uint8_t PROGMEM dlist1[] = {
       SSD1306_PAGEADDR,
       0,                      // Page start address
       0xFF,                   // Page end (not really, but works here)
       SSD1306_COLUMNADDR, 0}; // Column start address
+
+  speakerManager->update();
+
   ssd1306_commandList(dlist1, sizeof(dlist1));
+
+  speakerManager->update();
+
   ssd1306_command1(WIDTH - 1); // Column end address
 
 #if defined(ESP8266)
@@ -1010,26 +1017,42 @@ void Adafruit_SSD1306::display(void) {
 #endif
   uint16_t count = WIDTH * ((HEIGHT + 7) / 8);
   uint8_t *ptr = buffer;
+  speakerManager->update();
+
   if (wire) { // I2C
     wire->beginTransmission(i2caddr);
+    speakerManager->update();
     WIRE_WRITE((uint8_t)0x40);
+    speakerManager->update();
     uint16_t bytesOut = 1;
+    speakerManager->update();
     while (count--) {
       if (bytesOut >= WIRE_MAX) {
+        speakerManager->update();
         wire->endTransmission();
+        speakerManager->update();
         wire->beginTransmission(i2caddr);
+        speakerManager->update();
         WIRE_WRITE((uint8_t)0x40);
+        speakerManager->update();
         bytesOut = 1;
+        speakerManager->update();
       }
       WIRE_WRITE(*ptr++);
+      speakerManager->update();
       bytesOut++;
+      speakerManager->update();
     }
     wire->endTransmission();
+    speakerManager->update();
   } else { // SPI
     SSD1306_MODE_DATA
+    speakerManager->update();
     while (count--)
       SPIwrite(*ptr++);
+        speakerManager->update();
   }
+  speakerManager->update();
   TRANSACTION_END
 #if defined(ESP8266)
   yield();

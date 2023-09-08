@@ -29,10 +29,9 @@ void loop() {
     fixedUpdate();
   }
 
+  //Serial.println(freeMemory());
 }
 
 void fixedUpdate(){
-  //gameManager->fixedUpdate();
-
-  //Serial.println(freeMemory());
+  gameManager->fixedUpdate();
 }

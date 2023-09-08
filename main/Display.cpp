@@ -26,8 +26,6 @@ void Display::initialize(){
     Serial.println(F("SSD1306 allocation failed"));
     while (true);
   }                                                             
-
-  updateDisplay();
 }
 
 void Display::draw(Object* object){
@@ -59,6 +57,6 @@ void Display::clearDisplay(){
   oled.clearDisplay();
 }
 
-void Display::updateDisplay(){
-  oled.display();
+void Display::updateDisplay(SpeakerManager* speakerManager){
+  oled.display(speakerManager);
 }
