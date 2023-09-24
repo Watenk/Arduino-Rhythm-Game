@@ -42,7 +42,6 @@ typedef class HardwareSPI SPIClass;
 #include <Adafruit_GFX.h>
 #include <SPI.h>
 #include <Wire.h>
-#include "..//..//..//Github/Arduino-Rhythm-Game/Main/SpeakerManager.h"
 
 #if defined(__AVR__)
 typedef volatile uint8_t PortReg;
@@ -148,7 +147,7 @@ public:
 
   bool begin(uint8_t switchvcc = SSD1306_SWITCHCAPVCC, uint8_t i2caddr = 0,
              bool reset = true, bool periphBegin = true);
-  void display(SpeakerManager* speakerManager);
+  void display(void);
   void clearDisplay(void);
   void invertDisplay(bool i);
   void dim(bool dim);

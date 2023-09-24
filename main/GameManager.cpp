@@ -4,6 +4,7 @@
 #include "Vector2Int.h"
 #include "Songs.h"
 #include "Notes.h"
+#include "Note.h"
 
 GameManager::GameManager(){
   display = new Display();
@@ -14,10 +15,6 @@ GameManager::GameManager(){
   display->initialize();
 }
 
-void GameManager::updateSound(){
-  speakerManager->update();
-}
-
 void GameManager::fixedUpdate(){
 
   updateObjects();
@@ -26,10 +23,10 @@ void GameManager::fixedUpdate(){
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(A5, 5000);
-  speakerManager->play(C5, 6000);
-  speakerManager->play(E5, 7000);
-  speakerManager->play(G5, 8000);
+  speakerManager->play(Note(A5, 5000));
+  //speakerManager->play(C5, 6000);
+  //speakerManager->play(E5, 7000);
+  //speakerManager->play(G5, 8000);
 
   //Test Notes
   objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
@@ -61,5 +58,5 @@ void GameManager::drawObjects(){
 
   display->drawUI();
 
-  display->updateDisplay(speakerManager);
+  display->updateDisplay();
 }

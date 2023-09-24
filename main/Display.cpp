@@ -57,6 +57,6 @@ void Display::clearDisplay(){
   oled.clearDisplay();
 }
 
-void Display::updateDisplay(SpeakerManager* speakerManager){
-  oled.display(speakerManager);
+void Display::updateDisplay(){
+  oled.display();
 }

@@ -10,7 +10,7 @@ class Display{
     void draw(Object* object);
     void drawNumber(int number, Vector2Int pos);
     void drawUI();
-    void updateDisplay(SpeakerManager* speakerManager);
+    void updateDisplay();
     void clearDisplay();
 
   private:

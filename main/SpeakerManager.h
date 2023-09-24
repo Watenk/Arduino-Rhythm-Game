@@ -1,23 +1,16 @@
 #pragma once
+
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
+
 #include "Note.h"
-#include "Speaker.h"
 #include "Settings.h"
 
 class SpeakerManager{
   public:
     SpeakerManager();
-    void update();
-    void play(int freq, long lenght);
+    void play(Note note);
 
   private:
-    void playNote(int speakerIndex, int freq, long lenght);
-
-    int speakerArraySize = 4;
-    Speaker speakers[4] = {
-      Speaker(speaker1Pin),
-      Speaker(speaker2Pin),
-      Speaker(speaker3Pin),
-      Speaker(speaker4Pin)
-    };
-
+  Adafruit_PWMServoDriver pwm;
 };

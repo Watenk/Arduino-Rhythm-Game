@@ -9,7 +9,6 @@
 class GameManager{
   public:
     GameManager();
-    void updateSound();
     void fixedUpdate();
     void drawObjects();
     void updateObjects();

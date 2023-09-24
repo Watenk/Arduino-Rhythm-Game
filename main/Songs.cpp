@@ -4,6 +4,6 @@ Songs::Songs(){
 
 }
 
-Note Songs::getColdAsIce(int index){
-  return coldAsIce[index];
-}
+// Note Songs::getColdAsIce(int index){
+//   return coldAsIce[index];
+// }

@@ -9,10 +9,6 @@ Time* time;
 void setup() {
 
   Serial.begin(9600);
-  pinMode(speaker1Pin, OUTPUT);
-  pinMode(speaker2Pin, OUTPUT);
-  pinMode(speaker3Pin, OUTPUT);
-  pinMode(speaker4Pin, OUTPUT);
 
   gameManager = new GameManager();
   time = new Time();
@@ -23,7 +19,6 @@ void setup() {
 void loop() {
 
   time->update();
-  gameManager->updateSound();
 
   if (time->tryFixedUpdate()){
     fixedUpdate();
