@@ -26,9 +26,9 @@ void GameManager::fixedUpdate(){
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(Note(A5, 2000));
-  speakerManager->play(Note(C5, 5000));
-  speakerManager->play(Note(E5, 10000));
+  speakerManager->play(Note(A5, 2000, 100));
+  speakerManager->play(Note(C5, 5000, 100));
+  speakerManager->play(Note(E5, 10000, 100));
   //speakerManager->play(G5, 8000);
 
   //Test Notes
