@@ -1,5 +1,3 @@
-#define fpsTarget 10
-#define speaker1Pin 2
-#define speaker2Pin 3
-#define speaker3Pin 4
-#define speaker4Pin 5
+#define FixedUpdateSpeed 20
+#define SpeakerAmount 4
+#define PWMFrequency 1000

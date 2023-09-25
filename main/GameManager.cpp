@@ -10,22 +10,25 @@ GameManager::GameManager(){
   display = new Display();
   objectList = new List();
   speakerManager = new SpeakerManager();
-  Songs songs;
+  songs = new Songs();
 
   display->initialize();
 }
 
 void GameManager::fixedUpdate(){
-
+  //Objects
   updateObjects();
   drawObjects();
+
+  //Sound
+  speakerManager->fixedUpdate();
 }
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(Note(A5, 5000));
-  //speakerManager->play(C5, 6000);
-  //speakerManager->play(E5, 7000);
+  speakerManager->play(Note(A5, 2000));
+  speakerManager->play(Note(C5, 5000));
+  speakerManager->play(Note(E5, 10000));
   //speakerManager->play(G5, 8000);
 
   //Test Notes

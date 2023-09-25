@@ -1,12 +1,33 @@
 #include "SpeakerManager.h"
+#include "notes.h"
+#include "Settings.h"
 
 SpeakerManager::SpeakerManager(){
   pwm = Adafruit_PWMServoDriver();
   pwm.begin();
-  pwm.setPWMFreq(1000); //Between 1000 (1kHZ) and 2000 (2kHZ)
+  pwm.setPWMFreq(PWMFrequency); 
+
+  for (int i = 0; i < SpeakerAmount; i++){
+    speakers[i] = new Speaker();
+    speakers[i]->initialize(&pwm, i);
+  }
 }
 
 void SpeakerManager::play(Note note){
-  int pwmValue = 523;
-  pwm.setPWM(0, 0, pwmValue);
+
+//Find avaible Speaker and play note
+  for (int i = 0; i < SpeakerAmount; i++){
+    Speaker* currentSpeaker = speakers[i];
+
+    if (!currentSpeaker->busy){
+      currentSpeaker->play(note);
+      break;
+    }
+  }
+}
+
+void SpeakerManager::fixedUpdate(){
+  for (int i = 0; i < SpeakerAmount; i++){
+    speakers[i]->fixedUpdate();
+  }
 }

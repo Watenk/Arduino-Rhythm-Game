@@ -18,7 +18,7 @@ void Time::update(){
 bool Time::tryFixedUpdate(){
 
   //Do update
-  if (fixedUpdateTime > (1000 / fpsTarget)){
+  if (fixedUpdateTime > (1000 / FixedUpdateSpeed)){
     previousFixedUpdateTime = timeSinceStart;
     return true;
   }

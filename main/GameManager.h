@@ -10,17 +10,18 @@ class GameManager{
   public:
     GameManager();
     void fixedUpdate();
-    void drawObjects();
-    void updateObjects();
 
     //Songs
     void startColdAsIce();
 
   private:
+    void drawObjects();
+    void updateObjects();
+
     List* objectList;
     Display* display;
     SpeakerManager* speakerManager;
-    Songs songs;
+    Songs* songs;
 
     int updateDelay;
     int currentObjectIndex;
