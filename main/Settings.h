@@ -1,2 +1,3 @@
 #define FixedUpdateSpeed 20
-#define SpeakerAmount 4
+#define Speaker1 9
+#define Speaker2 10

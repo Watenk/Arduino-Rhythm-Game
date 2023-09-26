@@ -28,7 +28,7 @@ void GameManager::update(){
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(Note(NoteC5, 10000, 100));
+  speakerManager->play(Note(NoteA4, 10000, 100));
   //speakerManager->play(Note(E4, 11000, 100));
   //speakerManager->play(Note(F4, 12000, 100));
   //speakerManager->play(G5, 8000);

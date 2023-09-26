@@ -9,7 +9,8 @@ Time* time;
 void setup() {
 
   Serial.begin(9600);
-  pinMode(11, OUTPUT);
+  pinMode(Speaker1, OUTPUT);
+  pinMode(Speaker2, OUTPUT);
 
   gameManager = new GameManager();
   time = new Time();
