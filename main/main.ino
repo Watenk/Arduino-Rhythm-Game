@@ -9,6 +9,7 @@ Time* time;
 void setup() {
 
   Serial.begin(9600);
+  pinMode(11, OUTPUT);
 
   gameManager = new GameManager();
   time = new Time();
@@ -19,12 +20,14 @@ void setup() {
 void loop() {
 
   time->update();
+  gameManager->update();
 
+  //Serial.println(freeMemory());
+
+  //Try FixedUpdate
   if (time->tryFixedUpdate()){
     fixedUpdate();
   }
-
-  //Serial.println(freeMemory());
 }
 
 void fixedUpdate(){

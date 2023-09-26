@@ -10,6 +10,7 @@ class GameManager{
   public:
     GameManager();
     void fixedUpdate();
+    void update();
 
     //Songs
     void startColdAsIce();

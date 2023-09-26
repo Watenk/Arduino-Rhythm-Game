@@ -1,8 +1,5 @@
 #pragma once
 
-#include <Wire.h>
-#include <Adafruit_PWMServoDriver.h>
-
 #include "Note.h"
 #include "Settings.h"
 #include "Speaker.h"
@@ -11,9 +8,11 @@ class SpeakerManager{
   public:
     SpeakerManager();
     void play(Note note);
-    void fixedUpdate();
 
   private:
-  Adafruit_PWMServoDriver pwm;
   Speaker* speakers[SpeakerAmount];
+  static void update();
+
+  unsigned long toneStartTime = 0; // Variable to store the start time of the tone
+  unsigned long toneDuration = 0;
 };

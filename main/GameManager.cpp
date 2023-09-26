@@ -19,16 +19,18 @@ void GameManager::fixedUpdate(){
   //Objects
   updateObjects();
   drawObjects();
+}
 
+void GameManager::update(){
   //Sound
-  speakerManager->fixedUpdate();
+  //speakerManager->update();
 }
 
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(Note(A5, 2000, 100));
-  speakerManager->play(Note(C5, 5000, 100));
-  speakerManager->play(Note(E5, 10000, 100));
+  speakerManager->play(Note(NoteC5, 10000, 100));
+  //speakerManager->play(Note(E4, 11000, 100));
+  //speakerManager->play(Note(F4, 12000, 100));
   //speakerManager->play(G5, 8000);
 
   //Test Notes
