@@ -1,38 +1,3 @@
-#include "Songs.h"
-#include "Settings.h"
-
-Songs::Songs(){
-
-}
-
-void Songs::playSong(){
-  
-}
-
-void Songs::update(SpeakerManager* speakerManager, Time* time){
-
-  if (timeTillNextNote <= 0){
-    NoteData note = getNoteData(currentIndex);
-    timeTillNextNote = note.timeTillNextNote;
-    speakerManager->playNote(Note(note.note, note.length, note.timeTillNextNote));
-    currentIndex++;
-  }
-  else{
-    timeTillNextNote -= time->updateTime;
-  }
-}
-
-NoteData Songs::getNoteData(int index) {
-  NoteData noteDataEntry;
-  memcpy_P(&noteDataEntry, &songData[index], sizeof(NoteData));
-  noteDataEntry.note = pgm_read_word_near(&songData[index].note);
-  noteDataEntry.length = pgm_read_word_near(&songData[index].length);
-  noteDataEntry.timeTillNextNote = pgm_read_word_near(&songData[index].timeTillNextNote);
-  noteDataEntry.timeTillNextNote = int (noteDataEntry.timeTillNextNote * SongSpeedMultiplier);
-  return noteDataEntry;
-}
-
-const NoteData songData[] PROGMEM = {
 {NoteE5, 92, 92},
 {NoteDS5, 94, 94},
 {NoteE5, 92, 92},
@@ -2135,4 +2100,3 @@ const NoteData songData[] PROGMEM = {
 {NoteGS3, 92, 92},
 {NoteA2, 380, 378},
 {NoteA2, 382, 4},
-};
