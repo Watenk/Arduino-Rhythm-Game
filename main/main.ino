@@ -21,7 +21,7 @@ void setup() {
 void loop() {
 
   time->update();
-  gameManager->update();
+  gameManager->update(time);
 
   //Serial.println(freeMemory());
 

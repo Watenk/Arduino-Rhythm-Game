@@ -2,10 +2,10 @@
 
 class Note{
   public:
-    Note(int note, int lenght, int passedTime);
+    Note(int note, int lenght, int timeTillNextNote);
     int note;
     int lenght;
-    int passedTime;
+    int timeTillNextNote;
 
   private:
   

@@ -7,10 +7,10 @@ class Time{
     bool tryFixedUpdate();
     unsigned int fps;
     unsigned long timeSinceStart;
+    unsigned long updateTime;
 
   private:
     unsigned long previousUpdateTime;
     unsigned long previousFixedUpdateTime;
-    unsigned long updateTime;
     unsigned long fixedUpdateTime;
 };

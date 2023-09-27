@@ -15,20 +15,22 @@ GameManager::GameManager(){
   display->initialize();
 }
 
+void GameManager::update(Time* time){
+  speakerManager->update(time);
+  songs->update(speakerManager, time);
+}
+
 void GameManager::fixedUpdate(){
   //Objects
   updateObjects();
   drawObjects();
 }
 
-void GameManager::update(){
-  //Sound
-  //speakerManager->update();
-}
-
 void GameManager::startColdAsIce(){
 
-  speakerManager->play(Note(NoteA4, 10000, 100));
+  // speakerManager->playNote(Note(NoteA4, 3000, 100));
+  // speakerManager->playNote(Note(NoteC4, 4000, 100));
+  // speakerManager->playNote(Note(NoteE4, 4000, 100));
   //speakerManager->play(Note(E4, 11000, 100));
   //speakerManager->play(Note(F4, 12000, 100));
   //speakerManager->play(G5, 8000);

@@ -5,12 +5,13 @@
 #include "Display.h"
 #include "Songs.h"
 #include "SpeakerManager.h"
+#include "Time.h"
 
 class GameManager{
   public:
     GameManager();
     void fixedUpdate();
-    void update();
+    void update(Time* time);
 
     //Songs
     void startColdAsIce();
