@@ -12,10 +12,9 @@ void setup() {
   pinMode(Speaker1, OUTPUT);
   pinMode(Speaker2, OUTPUT);
 
+  randomSeed(analogRead(0));
   gameManager = new GameManager();
   time = new Time();
-
-  gameManager->startColdAsIce();
 }
 
 void loop() {

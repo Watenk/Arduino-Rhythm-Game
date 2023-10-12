@@ -3,9 +3,10 @@
 #include "Object.h"
 #include "List.h"
 #include "Display.h"
-#include "Songs.h"
 #include "SpeakerManager.h"
 #include "Time.h"
+#include "Note.h"
+#include "Song.h"
 
 class GameManager{
   public:
@@ -13,8 +14,7 @@ class GameManager{
     void fixedUpdate();
     void update(Time* time);
 
-    //Songs
-    void startColdAsIce();
+    void playNote(Note note);
 
   private:
     void drawObjects();
@@ -23,7 +23,7 @@ class GameManager{
     List* objectList;
     Display* display;
     SpeakerManager* speakerManager;
-    Songs* songs;
+    Song* song;
 
     int updateDelay;
     int currentObjectIndex;

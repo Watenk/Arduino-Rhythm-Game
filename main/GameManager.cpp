@@ -2,22 +2,21 @@
 
 #include "GameManager.h"
 #include "Vector2Int.h"
-#include "Songs.h"
 #include "Notes.h"
-#include "Note.h"
 
 GameManager::GameManager(){
   display = new Display();
   objectList = new List();
   speakerManager = new SpeakerManager();
-  songs = new Songs();
+  song = new Song();
 
   display->initialize();
+  song->playSong();
 }
 
 void GameManager::update(Time* time){
   speakerManager->update(time);
-  songs->update(speakerManager, time);
+  song->update(this, time);
 }
 
 void GameManager::fixedUpdate(){
@@ -26,16 +25,10 @@ void GameManager::fixedUpdate(){
   drawObjects();
 }
 
-void GameManager::startColdAsIce(){
+void GameManager::playNote(Note note){
 
-  // speakerManager->playNote(Note(NoteA4, 3000, 100));
-  // speakerManager->playNote(Note(NoteC4, 4000, 100));
-  // speakerManager->playNote(Note(NoteE4, 4000, 100));
-  //speakerManager->play(Note(E4, 11000, 100));
-  //speakerManager->play(Note(F4, 12000, 100));
-  //speakerManager->play(G5, 8000);
+  int currentColumn = random(6);
 
-  //Test Notes
   objectList->add(new Object(Vector2Int(10, 10), Vector2Int(0, 2), 5, 5, true));
 }
 

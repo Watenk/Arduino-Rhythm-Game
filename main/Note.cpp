@@ -1,5 +1,5 @@
 #include "Note.h"
 
-Note::Note(int note, int lenght, int timeTillNextNote) : note(note), lenght(lenght), timeTillNextNote(timeTillNextNote){
+Note::Note(int _note, int _lenght, int _timeTillNextNote) : note(_note), lenght(_lenght), timeTillNextNote(_timeTillNextNote){
   
 }

@@ -6,7 +6,7 @@
 #include "Notes.h"
 #include "Note.h"
 #include "Time.h"
-#include "SpeakerManager.h"
+class GameManager;
 
 struct NoteData {
   int note;   
@@ -16,19 +16,17 @@ struct NoteData {
 
 extern const NoteData songData[] PROGMEM;
 
-class Songs{
+class Song{
 
 public:
-  Songs();
   void playSong();
-  void update(SpeakerManager* speakerManager, Time* time);
-  
+  void update(GameManager* gameManager, Time* time);
 
 private:
-
-  NoteData getNoteData(int index);
+  Note getNote(int index);
 
   int currentIndex = 0;
   int timeTillNextNote = 0;
+  bool playSongBool = false;
 };
 
