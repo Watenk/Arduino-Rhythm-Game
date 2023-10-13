@@ -16,6 +16,30 @@ const NoteData songData[] PROGMEM = {
 {NoteGS4, 200, 200},
 {NoteAS4, 200, 200},
 {NoteB4, 200, 200},
+{NoteD3, 200, 200},
+{NoteE3, 200, 200},
+{NoteFS3, 200, 200},
+{NoteGS3, 200, 200},
+{NoteAS3, 200, 200},
+{NoteC4, 200, 200},
+{NoteD4, 200, 200},
+{NoteE4, 200, 200},
+{NoteFS4, 200, 200},
+{NoteGS4, 200, 200},
+{NoteAS4, 200, 200},
+{NoteB4, 200, 200},
+{NoteD3, 200, 200},
+{NoteE3, 200, 200},
+{NoteFS3, 200, 200},
+{NoteGS3, 200, 200},
+{NoteAS3, 200, 200},
+{NoteC4, 200, 200},
+{NoteD4, 200, 200},
+{NoteE4, 200, 200},
+{NoteFS4, 200, 200},
+{NoteGS4, 200, 200},
+{NoteAS4, 200, 200},
+{NoteB4, 200, 200},
 };
 
 void Song::playSong(){
@@ -29,7 +53,7 @@ void Song::update(GameManager* gameManager, Time* time){
       Note note = getNote(currentIndex);
 
       timeTillNextNote = note.timeTillNextNote;
-      gameManager->playNote(note);
+      gameManager->playSongNote(note);
 
       currentIndex++;
    }

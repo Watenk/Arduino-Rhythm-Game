@@ -13,12 +13,14 @@ class GameManager{
     GameManager();
     void fixedUpdate();
     void update(Time* time);
-
-    void playNote(Note note);
+    void playSongNote(Note note);
 
   private:
     void drawObjects();
     void updateObjects();
+    void handleInput();
+    Object* checkIfObjectInPos(Vector2Int pos);
+    void playNote(Object* object);
 
     List* objectList;
     Display* display;
