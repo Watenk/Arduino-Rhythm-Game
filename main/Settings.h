@@ -1,6 +1,6 @@
 #define FixedUpdateSpeed 20
-#define SongSpeedMultiplier 2 //Higher is slower songSpeed
-#define HitAllowance 5 //How many pixels a note can be off
+#define SongSpeedMultiplier 8 //Higher is slower songSpeed
+#define HitAllowance 3 //How many pixels a note can be off
 #define NoteSpawnHeight -10
 #define Speaker1 9
 #define Speaker2 10
